@@ -1,0 +1,8 @@
+@(list:Seq[Member])(title:String)
+@layout(title) {
+<ul>
+    @for(member <- list) {
+        <li>@member.name / @member.team.name</li>
+    }
+</ul>
+}

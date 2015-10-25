@@ -1,0 +1,3 @@
+GET     /               controllers.Application.index
+GET     /list           controllers.Application.list
+GET     /test           controllers.Application.test

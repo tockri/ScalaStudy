@@ -1,0 +1,2 @@
+# ScalaStudy
+Studying Scala

@@ -22,7 +22,7 @@ object Application extends Controller with ReflectionSupport {
 
   def test = Action {
     val message = new StringBuilder()
-    Member.find(1).map{ member =>
+    Member.get(1).map { member =>
       message.append(member.name + "-" + member.team.name)
       message.append("\n-------\n")
       val map = caseObjectToMap(member)
@@ -30,7 +30,6 @@ object Application extends Controller with ReflectionSupport {
       message.append("\n\n")
       DB.localTx { implicit session =>
         message.append(Team.insert(member.team))
-
         Team.update(member.team.copy(name = "tested", createdAt = new Date(), id = 5))
         val newMember = Member.insert(member.copy(createdAt = new Date()))
         Member.update(member.copy(id = newMember, name = "updated"))

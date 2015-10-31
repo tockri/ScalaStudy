@@ -1,12 +1,9 @@
 
 import PlayKeys._
-import com.typesafe.config._
 
-val conf = ConfigFactory.parseFile(new File("conf/application.conf")).resolve()
+name := "ScalaTest"
 
-name := conf.getString("application.name")
-
-version := conf.getString("application.version")
+version := "1.0.0"
 
 lazy val root = (project in file("."))
 .enablePlugins(PlayScala)
@@ -14,7 +11,6 @@ lazy val root = (project in file("."))
   scalaVersion := "2.11.7",
   resolvers += "amateras-repo" at "http://amateras.sourceforge.jp/mvn/",
   resolvers += "gcm-server-repository" at "https://raw.github.com/slorber/gcm-server-repository/master/releases/",
-  resolvers += "Nulab Maven Repository" at "s3://nulab-maven/",
   resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases",
   transitiveClassifiers in Global := Seq(Artifact.SourceClassifier),
   sources in (Compile, doc) := Nil,
@@ -26,7 +22,6 @@ lazy val root = (project in file("."))
   javaOptions in Test ++= sys.process.javaVmArguments.filter(
     a => Seq("-Xmx","-Xms","-XX").exists(a.startsWith)
   ),
-  testOptions in Test += Tests.Argument(TestFrameworks.Specs2, "junitxml", "console"),
   parallelExecution in Test := false
 )
 
@@ -38,7 +33,6 @@ libraryDependencies ++= Seq(
   evolutions,
   "org.scalatest" %% "scalatest" % "2.2.1" % "test",
   "org.scalatestplus" %% "play" % "1.4.0-M3" % "test",
-  "com.nulab-inc" %% "play2-oauth2-provider" % "0.15.0",
   "org.scala-lang" % "scala-reflect" % scalaVersion.value,
   "org.scalikejdbc" %% "scalikejdbc" % "2.2.8" excludeAll(
     ExclusionRule(organization = "commons-dbcp", name="commons-dbcp")
@@ -46,8 +40,7 @@ libraryDependencies ++= Seq(
   "org.scalikejdbc" %% "scalikejdbc-syntax-support-macro" % "2.2.8",
   "org.scalikejdbc" %% "scalikejdbc-config" % "2.2.8",
   "org.scalikejdbc" %% "scalikejdbc-play-dbapi-adapter" % "2.4.2",
-  "org.postgresql" % "postgresql" % "9.3-1102-jdbc41",
-  "net.debasishg" %% "redisclient" % "2.13"
+  "org.postgresql" % "postgresql" % "9.3-1102-jdbc41"
 )
 
 

@@ -8,7 +8,7 @@ import scalikejdbc._
  */
 case class Team(id: Long, name: String, createdAt: Date)
 
-object Team extends AutoSQLSyntaxSupport[Team] {
+object Team extends SingleAutoSQLSyntaxSupport[Team] {
   /**
    * convert from record
    */
@@ -28,7 +28,7 @@ object Team extends AutoSQLSyntaxSupport[Team] {
 case class Member(id: Long, name: String, teamId: Long, createdAt: Date, team: Team)
 
 
-object Member extends AutoJoinSQLSyntaxSupport[Member, Team] {
+object Member extends JoinedAutoSQLSyntaxSupport[Member, Team] {
   override val joinColName = "team_id"
   override val joinedCompanion = Team
   /**

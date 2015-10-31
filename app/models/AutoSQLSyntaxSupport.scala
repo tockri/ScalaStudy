@@ -102,7 +102,7 @@ trait AutoSQLSyntaxSupport[S] extends SQLSyntaxSupport[S] with ReflectionSupport
    * update existing record
    * @param obj members are translated automatically, especially JsObject will be serialized into text.
    */
-  def update[S: TypeTag : ClassTag](obj: S)(implicit session: DBSession): Unit = {
+  def update[S: TypeTag : ClassTag](obj: S)(implicit session: DBSession): Int = {
     val cnValues = columnValueList(obj)
     cnValues.find(_._1 == idColName).map { case (cn, id) if (id.asInstanceOf[Long] > 0) =>
       val setValues = cnValues.filter(_._1 != idColName)
@@ -113,7 +113,7 @@ trait AutoSQLSyntaxSupport[S] extends SQLSyntaxSupport[S] with ReflectionSupport
             SET ${setPart}
             WHERE ${idColName} = ?"""
       ).bind(values: _*).update.apply()
-    }
+    }.getOrElse(0)
   }
 
   /**

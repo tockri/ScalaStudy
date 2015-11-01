@@ -4,9 +4,12 @@ import java.util.Date
 
 import models._
 import play.api._
+import play.api.i18n.{Messages, Lang}
 import play.api.mvc._
 import scalikejdbc._
 import utils._
+import play.api.Play.current
+import play.api.i18n.Messages.Implicits._
 
 object Application extends Controller with ReflectionSupport {
   def index = Action {
@@ -29,12 +32,18 @@ object Application extends Controller with ReflectionSupport {
       message.append(map.mkString("\n--\n"))
       message.append("\n\n")
       DB.localTx { implicit session =>
-        message.append(Team.insert(member.team))
-        Team.update(member.team.copy(name = "tested", createdAt = new Date(), id = 5))
+        message.append(Bizteam.insert(member.team))
+        Bizteam.update(member.team.copy(name = "tested", createdAt = new Date(), id = 5))
         val newMember = Member.insert(member.copy(createdAt = new Date()))
         Member.update(member.copy(id = newMember, name = "updated"))
       }
     }
     Ok(message.toString())
+  }
+
+  def test2 = Action {
+    implicit val lang:Lang = Lang("en-JS")
+    val sm = new SubMessages("integrations/github")
+    Ok(sm("integration.github.description"))
   }
 }

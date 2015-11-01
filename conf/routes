@@ -1,3 +1,4 @@
 GET     /               controllers.Application.index
 GET     /list           controllers.Application.list
 GET     /test           controllers.Application.test
+GET     /test2           controllers.Application.test2

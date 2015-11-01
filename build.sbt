@@ -39,9 +39,11 @@ libraryDependencies ++= Seq(
   ),
   "org.scalikejdbc" %% "scalikejdbc-syntax-support-macro" % "2.2.8",
   "org.scalikejdbc" %% "scalikejdbc-config" % "2.2.8",
+  "org.scalikejdbc" %% "scalikejdbc-play-initializer" % "2.4.2",
   "org.scalikejdbc" %% "scalikejdbc-play-dbapi-adapter" % "2.4.2",
   "org.postgresql" % "postgresql" % "9.3-1102-jdbc41"
 )
+
 
 
 playRunHooks <+= baseDirectory.map(base => Gulp(base))

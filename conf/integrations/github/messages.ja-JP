@@ -1,0 +1,37 @@
+# --- GitHub integration
+integration.github.fullName=GitHub
+integration.github.summary=リポジトリへのプッシュやプルリクエストなどのイベントをTypetalkに通知できるようになります。
+integration.github.description=<a href="https://github.com" target="_blank">GitHub</a>は、Gitリポジトリのホスティング、コードレビュー、課題管理などを備えたサービスです。リポジトリへのプッシュやプルリクエストなどの<a href="https://help.github.com/articles/about-webhooks/" target="_blank">イベント</a>をTypetalkに通知できるようになります。設定するリポジトリにはadmin権限が必要です。
+integration.github.requireAuthentication=GitHub 連携には認証が必要です。
+integration.github.authToolTip=GitHubアカウントを認証
+integration.github.org=組織
+integration.github.repo=リポジトリ
+integration.github.eventToNotify=通知するイベント
+integration.github.event.push=プッシュ
+integration.github.event.commitComment=コミットまたはDiffへのコメント
+integration.github.event.issues=Issue全般
+integration.github.event.issueComment=Issueへのコメント
+integration.github.event.pullRequest=プルリクエスト全般
+integration.github.event.pullRequestReviewComment=プルリクエストのDiffへのコメント
+integration.github.event.gollum=Wiki全般
+integration.github.error=Github APIとの通信時にエラーが発生しました。
+integration.github.error.repos=Webhookを追加可能な権限を持つリポジトリがありません。
+integration.github.commits={0}個のコミット
+integration.github.push={0} さんが {1} を {3} Git リポジトリの {2} ブランチにプッシュしました\n{4}
+integration.github.commitComment={0} さんが {2} Git リポジトリのコミット {1} にコメント :speech_balloon: しました。\n{3}
+integration.github.issue={0} さんが {3} Git リポジトリに課題 {2} を {1} しました。
+integration.github.pullRequest={0} さんが {3} Git リポジトリにプルリクエスト {2} を {1} しました。
+integration.github.issueComment={0} さんが {2} Git リポジトリの課題 {1} にコメント :speech_balloon: しました。\n{3}
+integration.github.pullRequestReviewComment={0} さんが {2} Git リポジトリのプルリクエスト {1} にコメント :speech_balloon: しました。\n{3}
+integration.github.gollum={0} さんが {3} Git リポジトリの Wiki {2} を {1} しました。
+integration.github.you=個人
+integration.github.created=作成
+integration.github.edited=編集
+integration.github.assigned=担当を設定
+integration.github.unassigned=担当を解除
+integration.github.labeled=ラベルを設定
+integration.github.unlabeled=ラベルを解除
+integration.github.opened=登録
+integration.github.closed=完了
+integration.github.reopened=再開
+integration.github.synchronize=同期

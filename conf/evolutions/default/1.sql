@@ -1,39 +1,41 @@
 # --- !Ups
 
-CREATE SEQUENCE "member_id_seq";
+CREATE SEQUENCE member_id_seq;
 
-CREATE TABLE "member"
+CREATE TABLE member
 (
-  id bigint NOT NULL DEFAULT nextval('member_id_seq') PRIMARY KEY,
+  id bigint NOT NULL DEFAULT nextval('member_id_seq'),
   name text NOT NULL DEFAULT ''::text,
-  team_id bigint NOT NULL,
-  created_at timestamp  NOT NULL
+  bizteam_id bigint NOT NULL,
+  created_at timestamp  NOT NULL,
+  constraint member_pkey primary key (id)
 );
 
 
-CREATE SEQUENCE "team_id_seq";
+CREATE SEQUENCE bizteam_id_seq;
 
-CREATE TABLE "team"
+CREATE TABLE bizteam
 (
-  id bigint NOT NULL DEFAULT nextval('team_id_seq') PRIMARY KEY,
+  id bigint NOT NULL DEFAULT nextval('bizteam_id_seq'),
   name text NOT NULL DEFAULT ''::text,
-  created_at timestamp  NOT NULL
+  created_at timestamp  NOT NULL,
+  constraint bizteam_pkey primary key (id)
 );
 
-INSERT INTO "team" (name, created_at) VALUES
+INSERT INTO bizteam (name, created_at) VALUES
 ('Developing', NOW()),
 ('Sales', NOW());
 
-INSERT INTO "member" (name, team_id, created_at) VALUES
+INSERT INTO member (name, bizteam_id, created_at) VALUES
 ('Alice', 2, NOW()),
 ('Bob', 1, NOW());
 
 # --- !Downs
 
-DROP TABLE "member";
+DROP TABLE member;
 
-DROP SEQUENCE "member_id_seq";
+DROP SEQUENCE member_id_seq;
 
-DROP TABLE "team";
+DROP TABLE bizteam;
 
-DROP SEQUENCE "team_id_seq";
+DROP SEQUENCE bizteam_id_seq;
